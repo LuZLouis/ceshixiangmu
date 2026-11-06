@@ -1,61 +1,35 @@
-# 万象仙途
+# 万象仙途 v6.0.1
 
-从日常选择出发，穿越六界，走出自己的修行之道。中文幻想互动故事，结果用于娱乐与自我探索。
+中文修仙互动小游戏，使用用户提供的 `wanxiang-github-pages.zip` 发布。与 `Wanxiang_Xiantu_v6.0.1.zip` 中 `dist/` 的全部 16 个文件逐一校验一致。
 
-## 已有内容
+## 在线游玩
 
-- 人、妖、鬼、魔、仙、神六方界域，16 条修途，8 种行事风格。
-- 120 个原创场景、480 个选项与后果；每局 6 道日常题、14 道剧情题，七章内按顺序呈现。
-- 行囊、灵石分配、道誓三场互动。
-- 16 位完整卡通人物、PNG 名帖、自动存档与最近 12 次道途。
+[打开万象仙途](https://luzlouis.github.io/ceshixiangmu/)
 
-## 运行
+网页可以独立运行，不依赖 Claude.ai、ChatGPT 登录、AI API 或外部 CDN。字体、题库和脚本都在本仓库中。结果仅供娱乐。
 
-项目为纯静态 HTML、CSS、JavaScript ES modules，不需要构建或安装运行依赖。
+## 部署与更新
 
-```bash
-python3 -m http.server 5173 --directory dist
+GitHub Pages 使用 `main` 分支的 `/(root)` 目录发布，`.nojekyll` 用于直接发布静态文件。
+
+更新时将新版本静态网页文件放在仓库根目录，保留 `index.html`、各 JS/CSS 文件和 `fonts/` 的相对位置，再提交到 `main`。不要把 ZIP 压缩包本身作为网页上传。
+
+## 本地预览
+
+无需安装依赖或构建，在仓库根目录运行：
+
+```sh
+python -m http.server 5173
 ```
 
-打开 `http://localhost:5173`。也可使用已有 IDE 的静态预览功能。Windows 可将 `python3` 换成 `py`。
+然后打开 http://localhost:5173/ 。ES modules 需要通过 HTTP 访问。
 
-检查题库、评分、存档及职业可达性，需要 Node.js（首版以 Node 24 验证）：
+## 访问说明
 
-```bash
-npm test
-```
+GitHub Pages 提供免费 HTTPS 网址，但中国大陆不同地区和运营商的实际访问速度与可达性需要测试，不保证稳定。长期面向大陆访问可将这些静态文件迁移到适合的托管平台，并按平台要求配置域名与备案。
 
-## GitHub Pages
+存档保存在当前浏览器中，更换设备、浏览器或域名不会自动迁移进度。
 
-本仓库提供 `.github/workflows/pages.yml`。在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。然后在 Actions 中运行 **Deploy Wanxiang Xiantu**。后续推送到 `main` 会检查并发布 `dist/`。
+## 验证
 
-工作流成功后的访问地址以 Actions 的 `github-pages` 部署结果为准。GitHub Pages 是备用托管，不保证中国大陆各地区、运营商的可达性或速度。
-
-## 国内部署
-
-只需把 `dist/` 内的文件及 `assets/` 上传到静态网站托管或 Web 服务器，首页设置为 `index.html`，开启 HTTPS。题库、图片、样式和评分均在本地文件中，没有外部字体、CDN 脚本或 AI API 运行依赖。
-
-面向中国大陆长期服务，可考虑国内云的静态托管与自有域名。中国内地资源的备案要求应按服务商现行规则办理；香港等境外托管的大陆访问体验需要实际测试。对象存储的默认域名可能只触发 HTML 下载，通常需要绑定自定义域名。
-
-- [腾讯云 COS 静态网站](https://cloud.tencent.com/document/product/436/32670)
-- [阿里云 OSS 静态网站](https://www.alibabacloud.com/help/zh/oss/user-guide/hosting-static-websites)
-
-## 与 Claude / Codex 协作
-
-让工具读取 `CLAUDE.md` 与 `README-world.md`，在独立分支修改并提交 Pull Request。合并到 `main` 后由 Pages 工作流发布。修改题库或评分时保留有效的检查；改变存档结构时处理旧数据兼容。
-
-原 ChatGPT Site 仍独立运行：https://wanxiang-xiantu.big-potato-bro.chatgpt.site 。本仓库的修改不会自动发布到那个地址。
-
-## 主要文件
-
-| 文件 | 内容 |
-| --- | --- |
-| `dist/app.js` | 页面、交互、导出和道途册 |
-| `dist/style.css` | 桌面与手机样式 |
-| `dist/catalog.js` | 类别、人物与互动定义 |
-| `dist/questions.js` | 题库与章节导语 |
-| `dist/engine.js` | 抽题、评分、存档校验 |
-| `dist/assets/` | 人物图集 |
-| `tests/engine.test.mjs` | 功能检查 |
-
-详细设定见 `README-world.md`。`QA.md` 为初版历史验收记录。进度仅存在当前浏览器，清除浏览器数据或更换域名不会自动迁移。
+部署前，原始源码包附带的 14 项 Node.js 测试全部通过，覆盖题库、评分、存档、分享、合道与历练等逻辑。

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3ecdc">
+  <title>万象仙途 · 你是哪一种修士</title>
+  <meta name="description" content="下班地铁上睡着，醒来在修仙宗门考核现场。12 道题，3 分钟，测出你的仙门工牌：卷王剑修？摸鱼丹修？杠精天机师？">
+  <meta property="og:title" content="万象仙途 · 你是哪一种修士">
+  <meta property="og:description" content="12 道题，3 分钟。测完把链接发给朋友，看看你们是搭子还是冤家。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23c23a22'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='40' font-weight='900' fill='%23f3ecdc'%3E仙%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="./fonts/wx-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="logo" href="#" data-nav="home"><span class="logo-seal">仙</span><span class="display">万象仙途</span></a>
+    <nav>
+      <button data-nav="dex">图鉴</button>
+      <button data-nav="me" id="nav-me" hidden>我的工牌</button>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1"><p class="boot">阿照正在叼来考卷……</p></main>
+  <footer class="foot">万象仙途 · 原创修仙小游戏 · 结果纯属娱乐，请勿用于辞职</footer>
+  <dialog id="modal"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="boot">需要开启 JavaScript 才能参加考核。</p></noscript>
+  <script type="module">
+    import('./app.js').catch(() => {
+      document.querySelector('#main').innerHTML = '<p class="boot">考卷被风吹跑了。<button class="btn" onclick="location.reload()">刷新再试</button></p>';
+    });
+  </script>
+</body>
+</html>
